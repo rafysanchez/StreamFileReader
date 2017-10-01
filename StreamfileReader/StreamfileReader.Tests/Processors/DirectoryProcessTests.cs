@@ -1,12 +1,12 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
-using StreamfileReader.Tests.Library;
-using StreamFileReader;
+﻿using StreamfileReader.Tests.Library;
 using StreamFileReader.Domain;
 using StreamFileReader.Library;
+using System;
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace StreamfileReader.Tests.Processors {
+
     [ExcludeFromCodeCoverage]
     public class DirectoryProcessTests {
         private string InComingDirectory { get; }
@@ -44,7 +44,7 @@ namespace StreamfileReader.Tests.Processors {
         [Fact]
         [Order(2)]
         public void CreateDirectoryIfNotExistsSuccess() {
-            var fileNames = DirectoryProcessor.GetFileNames($@"{InComingDirectory}\{DateTime.UtcNow.Ticks}", createDirectoryIfNotExists:false);
+            var fileNames = DirectoryProcessor.GetFileNames($@"{InComingDirectory}\{DateTime.UtcNow.Ticks}", createDirectoryIfNotExists: false);
             Assert.Null(fileNames);
         }
     }

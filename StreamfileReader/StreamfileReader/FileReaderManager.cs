@@ -2,8 +2,10 @@
 using StreamFileReader.Library;
 
 namespace StreamFileReader {
+
     public class FileReaderManager : IFileReaderManager {
         private StartUpSettings StartUpSettings { get; }
+
         public FileReaderManager(StartUpSettings startUpSettings) {
             StartUpSettings = startUpSettings;
         }
@@ -23,5 +25,3 @@ namespace StreamFileReader {
         }
     }
 }
-
-

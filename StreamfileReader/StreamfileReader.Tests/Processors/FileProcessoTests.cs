@@ -1,18 +1,15 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Runtime.InteropServices;
-using StreamfileReader.Tests.Library;
-using Xunit;
-using System.Runtime.CompilerServices;
+﻿using StreamfileReader.Tests.Library;
 using StreamFileReader;
 using StreamFileReader.Domain;
 using StreamFileReader.Library;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using Xunit;
 
 namespace StreamfileReader.Tests.Processors {
+
     [ExcludeFromCodeCoverage]
     public class FileProcessoTests {
-        
         private string InComingDirectory { get; }
         private string SearchPattern { get; }
 
@@ -80,7 +77,7 @@ namespace StreamfileReader.Tests.Processors {
             TestFileData(file01, fileDataList[0]);
             TestFileData(file02, fileDataList[1]);
 
-            void TestFileData(string fullName, FileData fileData) { 
+            void TestFileData(string fullName, FileData fileData) {
                 Assert.NotNull(fileData);
                 Assert.True(!string.IsNullOrEmpty(fileData.FullName));
                 Assert.Equal(fullName, fileData.FullName);

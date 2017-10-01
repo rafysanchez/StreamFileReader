@@ -2,13 +2,15 @@
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("StreamfileReader.Tests")]
+
 namespace StreamFileReader.Library {
+
     internal static class DirectoryProcessor {
 
         public static string[] GetFileNames(string path, string searchPattern = "*.*", bool createDirectoryIfNotExists = true) {
             return !CreateDirectoryIfNotExists(path, createDirectoryIfNotExists) ? null : GetListOfFiles(path, searchPattern);
         }
-        
+
         private static bool CreateDirectoryIfNotExists(string path, bool createDirectoryIfNotExists = true) {
             if (Directory.Exists(path)) return true;
 

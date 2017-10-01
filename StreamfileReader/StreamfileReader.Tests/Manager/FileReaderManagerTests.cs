@@ -1,10 +1,11 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using StreamfileReader.Tests.Library;
+﻿using StreamfileReader.Tests.Library;
 using StreamFileReader;
 using StreamFileReader.Domain;
+using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace StreamfileReader.Tests.Manager {
+
     [ExcludeFromCodeCoverage]
     public class FileReaderManagerTests {
         private string InComingDirectory { get; }
@@ -17,10 +18,8 @@ namespace StreamfileReader.Tests.Manager {
 
         [Fact]
         [Order(1)]
-        public void FileListSuccess()
-        {
-            var startUpSettings = new StartUpSettings
-            {
+        public void FileListSuccess() {
+            var startUpSettings = new StartUpSettings {
                 InComingDirectory = InComingDirectory,
                 SearchPattern = SearchPattern
             };
