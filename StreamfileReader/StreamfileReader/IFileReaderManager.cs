@@ -6,6 +6,8 @@ namespace StreamFileReader {
 
         FileData[] GetFiles();
 
+        FileData GetFile(string fullfileName);
+
         string[] GetFileList();
     }
 }

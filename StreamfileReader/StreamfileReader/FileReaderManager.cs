@@ -18,6 +18,12 @@ namespace StreamFileReader {
             return fileDataList;
         }
 
+        public FileData GetFile(string fullfileName) {
+            var fileDataList = FileProcessor.GetFile(fullfileName);
+
+            return fileDataList;
+        }
+
         public string[] GetFileList() {
             var fileList = DirectoryProcessor.GetFileNames(StartUpSettings.InComingDirectory, StartUpSettings.SearchPattern, true);
 

@@ -51,6 +51,28 @@ namespace StreamfileReader.Tests.Manager {
 
         [Fact]
         [Order(2)]
+        public void FileSuccess() {
+            var startUpSettings = new StartUpSettings {
+                InComingDirectory = InComingDirectory,
+                SearchPattern = SearchPattern
+            };
+
+            FileUtility.ClearDirectory(startUpSettings.InComingDirectory);
+            var file01 =
+                FileUtility.CreateStubFile(startUpSettings.InComingDirectory, startUpSettings.SearchPattern, "01");
+
+            IFileReaderManager fileReaderManager = new FileReaderManager(startUpSettings);
+
+            var fileData = fileReaderManager.GetFile(file01);
+
+            Assert.NotNull(fileData);
+            Assert.True(fileData.Lines.Length > 0);
+            Assert.Equal(fileData.FullName, file01);
+        }
+
+
+        [Fact]
+        [Order(3)]
         public void FileListNotFound() {
             var startUpSettings = new StartUpSettings {
                 InComingDirectory = InComingDirectory,
