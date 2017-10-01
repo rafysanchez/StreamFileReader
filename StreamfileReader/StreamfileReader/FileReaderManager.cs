@@ -20,7 +20,7 @@ namespace StreamfileReader {
 
         }
 
-        public HashSet<string> GetFileList() {
+        public string[] GetFileList() {
             var fileList = DirectoryProcessor.GetFilenames(StartUpSettings.InComingDirectory, StartUpSettings.SearchPattern, true);
 
             return fileList;

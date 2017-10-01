@@ -6,6 +6,6 @@ namespace StreamfileReader {
     public interface IFileReaderManager {
         void Execute();
 
-        HashSet<string> GetFileList();
+        string[] GetFileList();
     }
 }

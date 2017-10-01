@@ -1,13 +1,9 @@
-﻿
-using System;
-using System.Diagnostics.CodeAnalysis;
-using System.IO;
-using StreamfileReader;
+﻿using System.Diagnostics.CodeAnalysis;
 using StreamfileReader.Domain;
 using StreamfileReader.Tests.Library;
 using Xunit;
 
-namespace StreamfileReader.Tests.DirectoryProcess {
+namespace StreamfileReader.Tests.Processors {
     [ExcludeFromCodeCoverage]
     public class DirectoryProcessTests {
         private string InComingDirectory { get; }
@@ -15,7 +11,7 @@ namespace StreamfileReader.Tests.DirectoryProcess {
 
         public DirectoryProcessTests() {
             SearchPattern = @"*.txt";
-            InComingDirectory = @"c:\temp\data";
+            InComingDirectory = @"c:\temp\data\dirtests";
         }
 
         [Fact]
@@ -33,7 +29,7 @@ namespace StreamfileReader.Tests.DirectoryProcess {
 
             var fileList = fileReaderManager.GetFileList();
 
-            Assert.True(fileList.Count > 0);
+            Assert.True(fileList.Length > 0);
         }
 
         [Fact]
@@ -50,7 +46,7 @@ namespace StreamfileReader.Tests.DirectoryProcess {
 
             var fileList = fileReaderManager.GetFileList();
 
-            Assert.True(fileList.Count == 0);
+            Assert.True(fileList.Length == 0);
         }
     }
 }

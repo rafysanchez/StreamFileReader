@@ -6,6 +6,7 @@ using StreamfileReader.Domain;
 using StreamfileReader.Library;
 using StreamfileReader.Tests.Library;
 using Xunit;
+using System.Runtime.CompilerServices;
 
 namespace StreamfileReader.Tests.Processors {
     public class FileProcessoTests {
@@ -15,11 +16,11 @@ namespace StreamfileReader.Tests.Processors {
 
         public FileProcessoTests() {
             SearchPattern = @"*.txt";
-            InComingDirectory = @"c:\temp\data";
+            InComingDirectory = @"c:\temp\data\filetests";
         }
 
         [Fact]
-        [Order(1)]
+        [Order(3)]
         public void FileReadSuccess() {
             var startUpSettings = new StartUpSettings {
                 InComingDirectory = InComingDirectory,
@@ -33,7 +34,7 @@ namespace StreamfileReader.Tests.Processors {
 
             var fileList = fileReaderManager.GetFileList();
 
-            Assert.True(fileList.Count > 0);
+            Assert.True(fileList.Length > 0);
 
             foreach (var file in fileList) {
                 var fileData = FileProcessor.GetFile(file);
@@ -42,7 +43,7 @@ namespace StreamfileReader.Tests.Processors {
                 Assert.True(!string.IsNullOrEmpty(fileData.FullName));
                 Assert.Equal(file, fileData.FullName);
                 Assert.NotNull(fileData.Lines);
-                Assert.True(fileData.Lines.Count == 4);
+                Assert.True(fileData.Lines.Length == 4);
                 Assert.True(!string.IsNullOrEmpty(fileData.Lines.ToArray()[0]));
                 Assert.True(!string.IsNullOrEmpty(fileData.Lines.ToArray()[1]));
                 Assert.True(!string.IsNullOrEmpty(fileData.Lines.ToArray()[2]));
@@ -55,7 +56,7 @@ namespace StreamfileReader.Tests.Processors {
         }
 
         [Fact]
-        [Order(2)]
+        [Order(4)]
         public void FileListReadSuccess() {
             var startUpSettings = new StartUpSettings {
                 InComingDirectory = InComingDirectory,
@@ -70,7 +71,7 @@ namespace StreamfileReader.Tests.Processors {
 
             var fileList = fileReaderManager.GetFileList();
 
-            Assert.True(fileList.Count == 2);
+            Assert.True(fileList.Length == 2);
 
             var fileDataList = FileProcessor.GetFiles(fileList);
 
@@ -82,7 +83,7 @@ namespace StreamfileReader.Tests.Processors {
                 Assert.True(!string.IsNullOrEmpty(fileData.FullName));
                 Assert.Equal(fullName, fileData.FullName);
                 Assert.NotNull(fileData.Lines);
-                Assert.True(fileData.Lines.Count == 4);
+                Assert.True(fileData.Lines.Length == 4);
                 Assert.True(!string.IsNullOrEmpty(fileData.Lines.ToArray()[0]));
                 Assert.True(!string.IsNullOrEmpty(fileData.Lines.ToArray()[1]));
                 Assert.True(!string.IsNullOrEmpty(fileData.Lines.ToArray()[2]));

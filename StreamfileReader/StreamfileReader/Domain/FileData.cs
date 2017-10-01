@@ -8,6 +8,6 @@ namespace StreamfileReader.Domain
     {
         public string FullName { get; set; }
 
-        public HashSet<string> Lines { get; set; }
+        public string[] Lines { get; set; }
     }
 }

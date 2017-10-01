@@ -1,11 +1,13 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("StreamfileReader.Tests")]
 namespace StreamfileReader.Library {
     internal static class DirectoryProcessor {
 
-        public static HashSet<string> GetFilenames(string path, string searchPattern = "*.*", bool createDirectoryIfNotExists = true) {
+        public static string[] GetFilenames(string path, string searchPattern = "*.*", bool createDirectoryIfNotExists = true) {
             return !CreateDirectoryIfNotExists(path, createDirectoryIfNotExists) ? null : GetListOfFiles(path, searchPattern);
         }
         
@@ -19,10 +21,10 @@ namespace StreamfileReader.Library {
             return true;
         }
 
-        private static HashSet<string> GetListOfFiles(string path, string searchPattern) {
+        private static string[] GetListOfFiles(string path, string searchPattern) {
             var fileEntries = Directory.GetFiles(path, searchPattern, SearchOption.TopDirectoryOnly);
 
-            return new HashSet<string>(fileEntries);
+            return fileEntries;
         }
     }
 }
