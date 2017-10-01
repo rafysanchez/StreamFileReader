@@ -63,7 +63,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DirectoryProcess\DirectoryProcessTests.cs" />
+    <Compile Include="Processors\DirectoryProcessTests.cs" />
+    <Compile Include="Processors\FileProcessoTests.cs" />
+    <Compile Include="Library\FileUtility.cs" />
     <Compile Include="Library\OrderAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

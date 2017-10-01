@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using StreamfileReader;
 using StreamfileReader.Domain;
@@ -7,7 +8,7 @@ using StreamfileReader.Tests.Library;
 using Xunit;
 
 namespace StreamfileReader.Tests.DirectoryProcess {
-    [TestCaseOrderer("FullNameOfOrderStrategyHere", "OrderStrategyAssemblyName")]
+    [ExcludeFromCodeCoverage]
     public class DirectoryProcessTests {
         private string InComingDirectory { get; }
         private string SearchPattern { get; }
@@ -20,13 +21,13 @@ namespace StreamfileReader.Tests.DirectoryProcess {
         [Fact]
         [Order(1)]
         public void FileListSuccess() {
-            ClearDirectory();
-            CreateStubFile();
-
             var startUpSettings = new StartUpSettings {
                 InComingDirectory = InComingDirectory,
                 SearchPattern = SearchPattern
             };
+
+            FileUtility.ClearDirectory(startUpSettings.InComingDirectory, startUpSettings.SearchPattern);
+            FileUtility.CreateStubFile(startUpSettings.InComingDirectory, startUpSettings.SearchPattern);
 
             IFileReaderManager fileReaderManager = new FileReaderManager(startUpSettings);
 
@@ -38,12 +39,12 @@ namespace StreamfileReader.Tests.DirectoryProcess {
         [Fact]
         [Order(2)]
         public void FileListNotFound() {
-            ClearDirectory();
-
             var startUpSettings = new StartUpSettings {
                 InComingDirectory = InComingDirectory,
                 SearchPattern = SearchPattern
             };
+
+            FileUtility.ClearDirectory(startUpSettings.InComingDirectory, startUpSettings.SearchPattern);
 
             IFileReaderManager fileReaderManager = new FileReaderManager(startUpSettings);
 
@@ -51,35 +52,5 @@ namespace StreamfileReader.Tests.DirectoryProcess {
 
             Assert.True(fileList.Count == 0);
         }
-
-        #region Support methods
-        private void ClearDirectory() {
-            if (Directory.Exists(InComingDirectory)) {
-                Directory.Delete(InComingDirectory, true);
-            }
-        }
-
-        private void CreateDirectory() {
-            if (!Directory.Exists(InComingDirectory)) {
-                Directory.CreateDirectory(InComingDirectory);
-            }
-        }
-
-        private void CreateStubFile() {
-            var path =
-                $@"{InComingDirectory}\{new Random(DateTime.UtcNow.Millisecond).Next(100000, 9999999)}{
-                        SearchPattern.Replace('*', '_')
-                    }";
-
-            CreateDirectory();
-
-            using (var sw = File.CreateText(path)) {
-                sw.WriteLine("Be");
-                sw.WriteLine("better");
-                sw.WriteLine("than");
-                sw.WriteLine("yesterday");
-            }
-        }
-        #endregion
     }
 }
