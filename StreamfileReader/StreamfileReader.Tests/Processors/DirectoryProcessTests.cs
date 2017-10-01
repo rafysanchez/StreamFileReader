@@ -27,7 +27,7 @@ namespace StreamfileReader.Tests.DirectoryProcess {
             };
 
             FileUtility.ClearDirectory(startUpSettings.InComingDirectory, startUpSettings.SearchPattern);
-            FileUtility.CreateStubFile(startUpSettings.InComingDirectory, startUpSettings.SearchPattern);
+            FileUtility.CreateStubFile(startUpSettings.InComingDirectory, startUpSettings.SearchPattern, "Test");
 
             IFileReaderManager fileReaderManager = new FileReaderManager(startUpSettings);
 

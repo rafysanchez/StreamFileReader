@@ -17,9 +17,9 @@ namespace StreamfileReader.Tests.Library {
             }
         }
 
-        public static void CreateStubFile(string inComingDirectory, string searchPattern) {
+        public static string CreateStubFile(string inComingDirectory, string searchPattern, string partialFileName) {
             var path =
-                $@"{inComingDirectory}\{new Random(DateTime.UtcNow.Millisecond).Next(100000, 9999999)}{
+                $@"{inComingDirectory}\{partialFileName}{new Random(DateTime.UtcNow.Millisecond).Next(100000, 9999999)}{
                         searchPattern.Replace('*', '_')
                     }";
 
@@ -31,6 +31,8 @@ namespace StreamfileReader.Tests.Library {
                 sw.WriteLine("than");
                 sw.WriteLine("yesterday");
             }
+
+            return path;
         }
     }
 }

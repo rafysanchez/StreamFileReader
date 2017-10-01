@@ -27,7 +27,7 @@ namespace StreamfileReader.Tests.Processors {
             };
 
             FileUtility.ClearDirectory(startUpSettings.InComingDirectory, startUpSettings.SearchPattern);
-            FileUtility.CreateStubFile(startUpSettings.InComingDirectory, startUpSettings.SearchPattern);
+            FileUtility.CreateStubFile(startUpSettings.InComingDirectory, startUpSettings.SearchPattern, "Test");
 
             IFileReaderManager fileReaderManager = new FileReaderManager(startUpSettings);
 
@@ -41,6 +41,46 @@ namespace StreamfileReader.Tests.Processors {
                 Assert.NotNull(fileData);
                 Assert.True(!string.IsNullOrEmpty(fileData.FullName));
                 Assert.Equal(file, fileData.FullName);
+                Assert.NotNull(fileData.Lines);
+                Assert.True(fileData.Lines.Count == 4);
+                Assert.True(!string.IsNullOrEmpty(fileData.Lines.ToArray()[0]));
+                Assert.True(!string.IsNullOrEmpty(fileData.Lines.ToArray()[1]));
+                Assert.True(!string.IsNullOrEmpty(fileData.Lines.ToArray()[2]));
+                Assert.True(!string.IsNullOrEmpty(fileData.Lines.ToArray()[3]));
+                Assert.Equal(fileData.Lines.ToArray()[0], "Be");
+                Assert.Equal(fileData.Lines.ToArray()[1], "better");
+                Assert.Equal(fileData.Lines.ToArray()[2], "than");
+                Assert.Equal(fileData.Lines.ToArray()[3], "yesterday");
+            }
+        }
+
+        [Fact]
+        [Order(2)]
+        public void FileListReadSuccess() {
+            var startUpSettings = new StartUpSettings {
+                InComingDirectory = InComingDirectory,
+                SearchPattern = SearchPattern
+            };
+
+            FileUtility.ClearDirectory(startUpSettings.InComingDirectory, startUpSettings.SearchPattern);
+            var file01 = FileUtility.CreateStubFile(startUpSettings.InComingDirectory, startUpSettings.SearchPattern, "01");
+            var file02 = FileUtility.CreateStubFile(startUpSettings.InComingDirectory, startUpSettings.SearchPattern, "02");
+
+            IFileReaderManager fileReaderManager = new FileReaderManager(startUpSettings);
+
+            var fileList = fileReaderManager.GetFileList();
+
+            Assert.True(fileList.Count == 2);
+
+            var fileDataList = FileProcessor.GetFiles(fileList);
+
+            TestFileData(file01, fileDataList[0]);
+            TestFileData(file02, fileDataList[1]);
+
+            void TestFileData(string fullName, FileData fileData) { 
+                Assert.NotNull(fileData);
+                Assert.True(!string.IsNullOrEmpty(fileData.FullName));
+                Assert.Equal(fullName, fileData.FullName);
                 Assert.NotNull(fileData.Lines);
                 Assert.True(fileData.Lines.Count == 4);
                 Assert.True(!string.IsNullOrEmpty(fileData.Lines.ToArray()[0]));
