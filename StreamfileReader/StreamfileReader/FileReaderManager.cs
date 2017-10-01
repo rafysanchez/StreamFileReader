@@ -8,7 +8,7 @@ namespace StreamFileReader {
             StartUpSettings = startUpSettings;
         }
 
-        public FileData[] Execute() {
+        public FileData[] GetFiles() {
             var fileList = DirectoryProcessor.GetFilenames(StartUpSettings.InComingDirectory, StartUpSettings.SearchPattern, true);
 
             var fileDataList = FileProcessor.GetFiles(fileList);

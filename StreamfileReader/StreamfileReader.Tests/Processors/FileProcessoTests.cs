@@ -10,8 +10,9 @@ using StreamFileReader.Domain;
 using StreamFileReader.Library;
 
 namespace StreamfileReader.Tests.Processors {
+    [ExcludeFromCodeCoverage]
     public class FileProcessoTests {
-        [ExcludeFromCodeCoverage]
+        
         private string InComingDirectory { get; }
         private string SearchPattern { get; }
 
@@ -28,7 +29,7 @@ namespace StreamfileReader.Tests.Processors {
                 SearchPattern = SearchPattern
             };
 
-            FileUtility.ClearDirectory(startUpSettings.InComingDirectory, startUpSettings.SearchPattern);
+            FileUtility.ClearDirectory(startUpSettings.InComingDirectory);
             FileUtility.CreateStubFile(startUpSettings.InComingDirectory, startUpSettings.SearchPattern, "Test");
 
             IFileReaderManager fileReaderManager = new FileReaderManager(startUpSettings);
@@ -64,7 +65,7 @@ namespace StreamfileReader.Tests.Processors {
                 SearchPattern = SearchPattern
             };
 
-            FileUtility.ClearDirectory(startUpSettings.InComingDirectory, startUpSettings.SearchPattern);
+            FileUtility.ClearDirectory(startUpSettings.InComingDirectory);
             var file01 = FileUtility.CreateStubFile(startUpSettings.InComingDirectory, startUpSettings.SearchPattern, "01");
             var file02 = FileUtility.CreateStubFile(startUpSettings.InComingDirectory, startUpSettings.SearchPattern, "02");
 

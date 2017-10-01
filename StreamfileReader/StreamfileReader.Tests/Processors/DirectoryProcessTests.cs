@@ -13,6 +13,8 @@ namespace StreamfileReader.Tests.Processors {
         public DirectoryProcessTests() {
             SearchPattern = @"*.txt";
             InComingDirectory = @"c:\temp\data\dirtests";
+
+            FileUtility.ClearDirectory(@"c:\temp\");
         }
 
         [Fact]
@@ -23,7 +25,7 @@ namespace StreamfileReader.Tests.Processors {
                 SearchPattern = SearchPattern
             };
 
-            FileUtility.ClearDirectory(startUpSettings.InComingDirectory, startUpSettings.SearchPattern);
+            FileUtility.ClearDirectory(startUpSettings.InComingDirectory);
             FileUtility.CreateStubFile(startUpSettings.InComingDirectory, startUpSettings.SearchPattern, "Test");
 
             IFileReaderManager fileReaderManager = new FileReaderManager(startUpSettings);
@@ -41,7 +43,7 @@ namespace StreamfileReader.Tests.Processors {
                 SearchPattern = SearchPattern
             };
 
-            FileUtility.ClearDirectory(startUpSettings.InComingDirectory, startUpSettings.SearchPattern);
+            FileUtility.ClearDirectory(startUpSettings.InComingDirectory);
 
             IFileReaderManager fileReaderManager = new FileReaderManager(startUpSettings);
 

@@ -2,7 +2,7 @@
 
 namespace StreamFileReader {
     public interface IFileReaderManager {
-        FileData[] Execute();
+        FileData[] GetFiles();
 
         string[] GetFileList();
     }

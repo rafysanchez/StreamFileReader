@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Manager\FileReaderManagerTests.cs" />
     <Compile Include="Processors\DirectoryProcessTests.cs" />
     <Compile Include="Processors\FileProcessoTests.cs" />
     <Compile Include="Library\FileUtility.cs" />

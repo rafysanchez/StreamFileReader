@@ -5,7 +5,7 @@ using System.IO;
 namespace StreamfileReader.Tests.Library {
     [ExcludeFromCodeCoverage]
     public static class FileUtility {
-        public static void ClearDirectory(string inComingDirectory, string searchPattern) {
+        public static void ClearDirectory(string inComingDirectory) {
             if (Directory.Exists(inComingDirectory)) {
                 Directory.Delete(inComingDirectory, true);
             }
