@@ -9,7 +9,7 @@ namespace StreamFileReader {
         }
 
         public FileData[] GetFiles() {
-            var fileList = DirectoryProcessor.GetFilenames(StartUpSettings.InComingDirectory, StartUpSettings.SearchPattern, true);
+            var fileList = DirectoryProcessor.GetFileNames(StartUpSettings.InComingDirectory, StartUpSettings.SearchPattern, true);
 
             var fileDataList = FileProcessor.GetFiles(fileList);
 
@@ -17,7 +17,7 @@ namespace StreamFileReader {
         }
 
         public string[] GetFileList() {
-            var fileList = DirectoryProcessor.GetFilenames(StartUpSettings.InComingDirectory, StartUpSettings.SearchPattern, true);
+            var fileList = DirectoryProcessor.GetFileNames(StartUpSettings.InComingDirectory, StartUpSettings.SearchPattern, true);
 
             return fileList;
         }

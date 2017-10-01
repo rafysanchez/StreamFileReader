@@ -1,7 +1,9 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using StreamfileReader.Tests.Library;
 using StreamFileReader;
 using StreamFileReader.Domain;
+using StreamFileReader.Library;
 using Xunit;
 
 namespace StreamfileReader.Tests.Processors {
@@ -13,43 +15,37 @@ namespace StreamfileReader.Tests.Processors {
         public DirectoryProcessTests() {
             SearchPattern = @"*.txt";
             InComingDirectory = @"c:\temp\data\dirtests";
-
-            FileUtility.ClearDirectory(@"c:\temp\");
         }
 
         [Fact]
         [Order(1)]
-        public void FileListSuccess() {
+        public void GetFileNamesSuccess() {
             var startUpSettings = new StartUpSettings {
                 InComingDirectory = InComingDirectory,
                 SearchPattern = SearchPattern
             };
 
             FileUtility.ClearDirectory(startUpSettings.InComingDirectory);
-            FileUtility.CreateStubFile(startUpSettings.InComingDirectory, startUpSettings.SearchPattern, "Test");
+            var file01 =
+                FileUtility.CreateStubFile(startUpSettings.InComingDirectory, startUpSettings.SearchPattern, "01");
+            var file02 =
+                FileUtility.CreateStubFile(startUpSettings.InComingDirectory, startUpSettings.SearchPattern, "02");
 
-            IFileReaderManager fileReaderManager = new FileReaderManager(startUpSettings);
+            var fileNames = DirectoryProcessor.GetFileNames(startUpSettings.InComingDirectory);
 
-            var fileList = fileReaderManager.GetFileList();
-
-            Assert.True(fileList.Length > 0);
+            Assert.NotNull(fileNames);
+            Assert.True(fileNames.Length == 2);
+            Assert.True(!string.IsNullOrEmpty(fileNames[0]));
+            Assert.True(!string.IsNullOrEmpty(fileNames[1]));
+            Assert.Equal(fileNames[0], file01);
+            Assert.Equal(fileNames[1], file02);
         }
 
         [Fact]
         [Order(2)]
-        public void FileListNotFound() {
-            var startUpSettings = new StartUpSettings {
-                InComingDirectory = InComingDirectory,
-                SearchPattern = SearchPattern
-            };
-
-            FileUtility.ClearDirectory(startUpSettings.InComingDirectory);
-
-            IFileReaderManager fileReaderManager = new FileReaderManager(startUpSettings);
-
-            var fileList = fileReaderManager.GetFileList();
-
-            Assert.True(fileList.Length == 0);
+        public void CreateDirectoryIfNotExistsSuccess() {
+            var fileNames = DirectoryProcessor.GetFileNames($@"{InComingDirectory}\{DateTime.UtcNow.Ticks}", createDirectoryIfNotExists:false);
+            Assert.Null(fileNames);
         }
     }
 }

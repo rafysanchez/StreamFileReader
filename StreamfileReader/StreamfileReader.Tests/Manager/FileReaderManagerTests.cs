@@ -48,10 +48,23 @@ namespace StreamfileReader.Tests.Manager {
             void TestFileDataList(FileData fileData, string fullName) {
                 Assert.Equal(fileData.FullName, fullName);
             }
+        }
 
+        [Fact]
+        [Order(2)]
+        public void FileListNotFound() {
+            var startUpSettings = new StartUpSettings {
+                InComingDirectory = InComingDirectory,
+                SearchPattern = SearchPattern
+            };
 
-        
+            FileUtility.ClearDirectory(startUpSettings.InComingDirectory);
 
+            IFileReaderManager fileReaderManager = new FileReaderManager(startUpSettings);
+
+            var fileList = fileReaderManager.GetFileList();
+
+            Assert.True(fileList.Length == 0);
         }
     }
 }

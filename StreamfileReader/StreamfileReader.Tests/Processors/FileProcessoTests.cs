@@ -22,7 +22,7 @@ namespace StreamfileReader.Tests.Processors {
         }
 
         [Fact]
-        [Order(3)]
+        [Order(1)]
         public void FileReadSuccess() {
             var startUpSettings = new StartUpSettings {
                 InComingDirectory = InComingDirectory,
@@ -58,7 +58,7 @@ namespace StreamfileReader.Tests.Processors {
         }
 
         [Fact]
-        [Order(4)]
+        [Order(2)]
         public void FileListReadSuccess() {
             var startUpSettings = new StartUpSettings {
                 InComingDirectory = InComingDirectory,

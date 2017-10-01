@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 namespace StreamFileReader.Library {
     internal static class DirectoryProcessor {
 
-        public static string[] GetFilenames(string path, string searchPattern = "*.*", bool createDirectoryIfNotExists = true) {
+        public static string[] GetFileNames(string path, string searchPattern = "*.*", bool createDirectoryIfNotExists = true) {
             return !CreateDirectoryIfNotExists(path, createDirectoryIfNotExists) ? null : GetListOfFiles(path, searchPattern);
         }
         
