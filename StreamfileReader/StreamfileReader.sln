@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamfileReader", "StreamfileReader\StreamfileReader.csproj", "{A7AEF335-50AA-4F40-8899-4FEE48458810}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StreamFileReader", "StreamfileReader\StreamFileReader.csproj", "{A7AEF335-50AA-4F40-8899-4FEE48458810}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamfileReader.Tests", "StreamfileReader.Tests\StreamfileReader.Tests.csproj", "{7A102A3C-923F-47D1-8DF1-478D7CD7E29E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamFileReader.Tests", "StreamfileReader.Tests\StreamFileReader.Tests.csproj", "{7A102A3C-923F-47D1-8DF1-478D7CD7E29E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

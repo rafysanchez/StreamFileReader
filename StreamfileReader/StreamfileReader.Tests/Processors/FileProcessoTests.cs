@@ -2,11 +2,12 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Runtime.InteropServices;
-using StreamfileReader.Domain;
-using StreamfileReader.Library;
 using StreamfileReader.Tests.Library;
 using Xunit;
 using System.Runtime.CompilerServices;
+using StreamFileReader;
+using StreamFileReader.Domain;
+using StreamFileReader.Library;
 
 namespace StreamfileReader.Tests.Processors {
     public class FileProcessoTests {

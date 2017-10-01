@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using StreamfileReader.Domain;
+﻿using StreamFileReader.Domain;
 
-namespace StreamfileReader {
+namespace StreamFileReader {
     public interface IFileReaderManager {
         FileData[] Execute();
 

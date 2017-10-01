@@ -2,6 +2,17 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Alexandre Brandão Lustosa</Authors>
+    <Company>.Net Inside</Company>
+    <Copyright>Alexandre Brandão lustosa</Copyright>
+    <PackageProjectUrl>https://github.com/alexandrebl/StreamFileReader</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/alexandrebl/StreamFileReader</PackageLicenseUrl>
+    <PackageIconUrl>https://github.com/alexandrebl/StreamFileReader</PackageIconUrl>
+    <RepositoryUrl>https://github.com/alexandrebl/StreamFileReader</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <PackageId>StreamFileReader</PackageId>
+    <Product>StreamFileReader</Product>
   </PropertyGroup>
 
 </Project>

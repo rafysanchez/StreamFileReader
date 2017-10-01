@@ -73,9 +73,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\StreamfileReader\StreamfileReader.csproj">
+    <ProjectReference Include="..\StreamfileReader\StreamFileReader.csproj">
       <Project>{A7AEF335-50AA-4F40-8899-4FEE48458810}</Project>
-      <Name>StreamfileReader</Name>
+      <Name>StreamFileReader</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

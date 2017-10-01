@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace StreamfileReader.Domain
+﻿namespace StreamFileReader.Domain
 {
     public sealed class FileData
     {

@@ -1,10 +1,8 @@
-﻿using System;
-using System.IO;
-using System.Collections.Generic;
+﻿using System.IO;
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("StreamfileReader.Tests")]
-namespace StreamfileReader.Library {
+namespace StreamFileReader.Library {
     internal static class DirectoryProcessor {
 
         public static string[] GetFilenames(string path, string searchPattern = "*.*", bool createDirectoryIfNotExists = true) {

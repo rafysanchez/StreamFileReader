@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using StreamfileReader.Domain;
+using StreamFileReader.Domain;
 
 [assembly: InternalsVisibleTo("StreamfileReader.Tests")]
-namespace StreamfileReader.Library {
+namespace StreamFileReader.Library {
     internal static class FileProcessor {
         public static FileData GetFile(string fullFileName) {
             var lines = System.IO.File.ReadAllLines(fullFileName);

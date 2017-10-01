@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using StreamfileReader.Domain;
-using StreamfileReader.Library;
+﻿using StreamFileReader.Domain;
+using StreamFileReader.Library;
 
-namespace StreamfileReader {
+namespace StreamFileReader {
     public class FileReaderManager : IFileReaderManager {
         private StartUpSettings StartUpSettings { get; }
         public FileReaderManager(StartUpSettings startUpSettings) {

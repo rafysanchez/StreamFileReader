@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using StreamfileReader.Domain;
 using StreamfileReader.Tests.Library;
+using StreamFileReader;
+using StreamFileReader.Domain;
 using Xunit;
 
 namespace StreamfileReader.Tests.Processors {
