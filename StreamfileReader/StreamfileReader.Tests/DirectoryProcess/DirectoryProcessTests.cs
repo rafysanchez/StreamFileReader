@@ -52,6 +52,7 @@ namespace StreamfileReader.Tests.DirectoryProcess {
             Assert.True(fileList.Count == 0);
         }
 
+        #region Support methods
         private void ClearDirectory() {
             if (Directory.Exists(InComingDirectory)) {
                 Directory.Delete(InComingDirectory, true);
@@ -79,5 +80,6 @@ namespace StreamfileReader.Tests.DirectoryProcess {
                 sw.WriteLine("yesterday");
             }
         }
+        #endregion
     }
 }
