@@ -12,12 +12,12 @@ namespace StreamfileReader {
             StartUpSettings = startUpSettings;
         }
 
-        public void Execute() {
-            //Obtem a lista de nomes arquivos do diretório
+        public FileData[] Execute() {
             var fileList = DirectoryProcessor.GetFilenames(StartUpSettings.InComingDirectory, StartUpSettings.SearchPattern, true);
 
-            //Processa cada arquivo e transforma em uma lista de stream
+            var fileDataList = FileProcessor.GetFiles(fileList);
 
+            return fileDataList;
         }
 
         public string[] GetFileList() {
@@ -27,3 +27,5 @@ namespace StreamfileReader {
         }
     }
 }
+
+

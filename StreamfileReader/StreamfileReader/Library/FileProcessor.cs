@@ -19,13 +19,13 @@ namespace StreamfileReader.Library {
             return fileData;
         }
 
-        public static IList<FileData> GetFiles(string[] fileList) {
+        public static FileData[] GetFiles(string[] fileList) {
             return (from fullFileName in fileList
                     let lines = System.IO.File.ReadAllLines(fullFileName)
                     select new FileData {
                         FullName = fullFileName,
                         Lines = lines
-                    }).ToList();
+                    }).ToArray();
         }
     }
 }
