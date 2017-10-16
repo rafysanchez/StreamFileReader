@@ -13,7 +13,7 @@
     <RepositoryType>GitHub</RepositoryType>
     <PackageId>StreamFileReader</PackageId>
     <Product>StreamFileReader</Product>
-    <Version>1.0.4</Version>
+    <Version>1.0.5</Version>
   </PropertyGroup>
 
 </Project>
