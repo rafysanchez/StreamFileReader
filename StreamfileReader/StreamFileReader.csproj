@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.3;netstandard1.4;netstandard1.5;netstandard1.6;netstandard2.0;net40;net45;net46;net461;net462;net47;netcoreapp1.0;netcoreapp1.1;netcoreapp2.0;</TargetFrameworks>
+    <TargetFrameworks>netstandard1.3;netstandard1.4;netstandard1.5;netstandard1.6;netstandard2.0;net40;net45;net46;net461;netcoreapp1.0;netcoreapp1.1;netcoreapp2.0;</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Alexandre Brandão Lustosa</Authors>
     <Company>.Net Inside</Company>
